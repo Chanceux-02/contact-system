@@ -19,6 +19,7 @@ class ContactFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'uid' => fake()->numberBetween(11,11),
             'company' => fake()->company(),
             'phone' => fake()->tollFreePhoneNumber(),
             'email' => fake()->unique()->safeEmail(),

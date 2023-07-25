@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CreateController;
+use App\Http\Controllers\GetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('contacts');
+
+Route::get('/login', function () {
+    return view('auth.login');
 });
+Route::get('/register', function () {
+    return view('auth.register');
+});
+Route::get('/thankyou', function () {
+    return view('pages.thankyou');
+});
+
+
+// I use withoutMiddleware, middleware to disable the csrf for testing it in postman. Just remove it after.
+
+Route::get('/', [GetController::class, 'contactList'])->name('contacts');
+
+Route::post('/register', [CreateController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+

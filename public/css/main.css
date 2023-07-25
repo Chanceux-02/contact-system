@@ -1,0 +1,15 @@
+.paginate svg{
+    width: 20px;
+    height: 20px;
+}
+.paginate{
+    margin: auto;
+    max-width: 70%;
+}
+.searchbar form{
+    max-width: 25%;
+}
+._table{
+    max-width: 80%;
+    margin: auto;
+}
