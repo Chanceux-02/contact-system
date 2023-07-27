@@ -6,12 +6,12 @@
 
 ;fetch user contacts
 
-can be access by logged in user only
-
 ;search should match atleast one of contact details result fetch using ajax
 
-delete contacts with pop up confirmation
+;delete contacts with pop up confirmation
 
-add contacts
+;add contacts
 
-edit contacts
+;edit contacts
+
+;can be access by logged in user only

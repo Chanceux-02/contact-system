@@ -5,24 +5,22 @@
     @endif
 
     <div class="d-flex justify-content-end me-5 mt-5">
-        <form action="{{route('logout')}}" method="post" class="border-end">
-            @csrf
-            <button class="btn btn-link" type="submit" name="submit">Add Contact</button>
-        </form>
-        <form action="{{route('logout')}}" method="post" class="border-end">
-            @csrf
-            <button class="btn btn-link" type="submit" name="submit">Contacts</button>
-        </form>
+        <a href="{{route('add-contacts')}}" class="mt-2 me-3">Add Contact</a>
+        <a href="http://" class="mt-2">Contacts</a>
         <form action="{{route('logout')}}" method="post">
             @csrf
             <button class="btn btn-link" type="submit" name="submit">Logout</button>
         </form>
     </div>
     <div class="searchbar d-flex justify-content-end me-5 mt-3">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" role="search" method="post" action="{{route('search-results')}}">
+            @csrf
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" id="searchBtn">Search</button>
           </form>
+    </div>
+    <div id="searchResultContainer">
+
     </div>
 
    <table class="table mt-3 border _table">
@@ -42,16 +40,10 @@
             <td>{{$data->phone}}</td>
             <td>{{$data->email}}</td>
             <td>
-                <form action="" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-link">Delete</button>
-                </form>
+                <a href="{{ route('edit-contact', ['id'=>$data->id]) }}">Edit</a>
             </td>
             <td>
-                <form action="" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-link">Edit</button>
-                </form>
+                <a href="{{ route('delete-contact', ['id'=>$data->id]) }}" id="deleteBtn">Delete</a>
             </td>
 
         </tr>
